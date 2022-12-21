@@ -2172,7 +2172,7 @@ impl Ui {
     ///     egui_extras::image::FitTo::Size(24, 24),
     /// );
     ///
-    /// ui.menu_image_button(img.texture_id(ctx), img.size_vec2(), |ui| {
+    /// ui.menu_button_image(img.texture_id(ctx), img.size_vec2(), |ui| {
     ///     ui.menu_button("My sub-menu", |ui| {
     ///         if ui.button("Close the menu").clicked() {
     ///             ui.close_menu();
@@ -2182,10 +2182,11 @@ impl Ui {
     /// ```
     ///
     /// See also: [`Self::close_menu`] and [`Response::context_menu`].
-    pub fn menu_image_button<R>(
+    pub fn menu_button_image<R>(
         &mut self,
         texture_id: TextureId,
         image_size: impl Into<Vec2>,
+        title: impl Into<WidgetText>,
         add_contents: impl FnOnce(&mut Ui) -> R,
     ) -> InnerResponse<Option<R>> {
         if let Some(menu_state) = self.menu_state.clone() {
